@@ -1,0 +1,144 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Porcentagem</title>
+    <link rel="shortcut icon" href="png-transparent-percentage-symbol-percent-sign-computer-icons-percentage-miscellaneous-angle-text-thumbnail.png" type="image/x-icon">
+
+    <style>
+         * {
+         
+            font-family: monospace;
+            font-size: 30pt;
+            background-color: blue;
+            color: white;
+        }
+
+        ::selection {
+    background:  #ffffff;
+    color: blue
+    ;
+  }
+
+    .numero {
+        
+        width: min-content;
+        max-width: max-content;
+        border: none;
+        border-bottom: black solid 1px;
+        text-align: center;
+        
+        
+    }
+
+    .button {
+    margin-top: 4vh;
+        box-shadow: #27272773 1px 0px 7px;}
+
+    .button:hover {
+        color: white;
+        background-color: black;
+       }
+
+       @media screen and (max-width: 1320px) and (min-width: 1000px) {
+
+
+    .button {
+            display: block;
+        }
+    .numero {
+        
+        width: 300px;}
+       }
+       @media screen and (max-width: 1000px) and (min-width: 696px) {
+
+    .numero {
+        
+        width: 20vw;}
+
+        .button {
+            display: block;
+        }
+
+
+       }
+
+
+
+       @media screen and (max-width: 697px) {
+        * {
+        font-size: 25pt;
+    }
+    .numero {
+        
+        width: 15vw;}
+       }
+    
+
+       @media screen and (max-width: 470px)  {
+        * {
+        font-size: 20pt;
+    }
+       }
+
+       @media screen and (max-width: 379px)  {
+        * {
+        font-size: 11pt;
+    }
+        h1 {
+            text-align: center;
+        }
+
+        .numero {
+        
+        width: 9vw;}
+       
+
+       }
+
+    </style>
+    
+</head>
+<body>
+    <section>
+    <h1>Calculadora de Porcentagem</h1>
+    <p>Quanto é <input type="number" id="n1" class="numero"> % de <input type="number" id="n2" class="numero">? <input type="button" value="Calcular" onclick="Calc1()" class="button"></p>
+    <div id="result1st"></div>
+    <p><input type="number" id="n3" class="numero"> é quantos % de <input type="number" id="n4" class="numero">? <input type="button" value="Calcular" onclick="Calc2()" class="button"> </p>
+    <div id="result2nd"></div>
+</section>
+    <script>
+
+const input = document.querySelectorAll(".numero");
+            const regex = new RegExp("^[0-9,]*$");
+            for (let i = 0; i < input.length; i++) {
+            input[i].addEventListener("beforeinput", (event) => {
+                if (event.data != null && !regex.test(event.data)) 
+                event.preventDefault();
+                });
+}
+
+           
+    function Calc1() {
+        let n1 = Number(document.querySelector('input#n1').value)
+        let n2 = Number(document.querySelector('input#n2').value)
+        let res1 = (n1 / 100) * n2
+        let resultado1 = res1
+    
+        result1st.innerHTML = `${resultado1.toLocaleString('pt-br')}`
+    }
+
+    function Calc2() {
+        let n3 = Number(document.querySelector('input#n3').value)
+        let n4 = Number(document.querySelector('input#n4').value)
+        let res2 = 100 * (n3 / n4) 
+        let resultado2 = res2
+        result2nd.innerHTML = `${resultado2.toLocaleString('pt-br')}%`
+    }
+    </script>
+
+
+</body>
+</html>
